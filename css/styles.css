@@ -1,12 +1,12 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Exo:900');
 
 /* Variables */
 
 :root {
   --color-win: #78CF82;
   --color-lose: #D94545;
-  --color-start: #5b85b7;
+  --color-start: #53c0cc;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
   --color-keys: #37474F;
@@ -20,7 +20,12 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Exo', cursive;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
 }
 
 body {
@@ -28,6 +33,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: url('../images/background.png');
 }
 
 li, ol, ul {
@@ -58,6 +64,12 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
   cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+  transform: scale(1.15);
+  background: var(--color-neutral-light);
 }
 
 #btn__reset {
@@ -86,7 +98,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: var(--color-start);
 }
 
 
@@ -101,25 +113,26 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  transform: scale(0.7);
 }
 
 .space {
-  width: 15px;
+  width: 30px;
 }
 
 
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #76CE82;
   font-size: 20px;
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   border-radius: 5px;
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  transform: scale(1.02);
+  transition: transform 0.3s cubic-bezier(.19, -1.1, .83, 2.28);
 }
 
 
@@ -131,7 +144,7 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: var(--color-neutral);
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
@@ -173,6 +186,31 @@ button {
   left: 0;
   right: 0;
   border-radius: 5px;
+  z-index: 1000;
+}
+
+#overlay.start {
+  background: linear-gradient(270deg, var(--color-win), var(--color-start));
+  background-size: 400% 400%;
+  -webkit-animation: gradientCycle 1s ease infinite;
+  -moz-animation: gradientCycle 1s ease infinite;
+  animation: gradientCycle 1s ease infinite;
+}
+
+#overlay.win {
+  background: linear-gradient(270deg, var(--color-win), darkgreen);
+  background-size: 400% 400%;
+  -webkit-animation: gradientCycle 3s ease infinite;
+  -moz-animation: gradientCycle 3s ease infinite;
+  animation: gradientCycle 3s ease infinite;
+}
+
+#overlay.lose {
+  background: linear-gradient(270deg, var(--color-lose), darkred);
+  background-size: 400% 400%;
+  -webkit-animation: gradientCycle 3s ease infinite;
+  -moz-animation: gradientCycle 3s ease infinite;
+  animation: gradientCycle 3s ease infinite;
 }
 
 .title {
@@ -201,4 +239,46 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+@-webkit-keyframes gradientCycle {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes gradientCycle {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes gradientCycle {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
 }
