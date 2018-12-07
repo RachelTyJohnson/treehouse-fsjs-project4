@@ -1,11 +1,12 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Exo:900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
 
 /* Variables */
+
 :root {
   --color-win: #78CF82;
   --color-lose: #D94545;
-  --color-start: #53c0cc;
+  --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
   --color-keys: #37474F;
@@ -16,14 +17,10 @@
 }
 
 /* main */
+
 * {
   box-sizing: border-box;
-  font-family: 'Exo', cursive;
-  -webkit-user-select: none;
-  /* Chrome all / Safari all */
-  -moz-user-select: none;
-  /* Firefox all */
-  -ms-user-select: none;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -31,7 +28,6 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
-  background-image: url('../images/background.png');
 }
 
 li, ol, ul {
@@ -46,6 +42,10 @@ h2 {
   margin: 0;
 }
 
+h1 {
+  font-size: 30px;
+}
+
 button {
   margin: 6px;
   border: 1px solid transparent;
@@ -58,12 +58,11 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
 }
 
-button:hover {
-  transform: scale(1.15);
-  background: var(--color-start);
+#btn__reset {
+	width: 200px;
+	margin: 0 auto;
 }
 
 .main-container {
@@ -80,12 +79,19 @@ button:hover {
   padding: 10px;
 }
 
-/* Title */
-.header {
-  color: var(--color-start);
+#phrase ul li{
+  margin-top: 15px;
 }
 
+/* Title */
+
+.header {
+  color: #3a3f58;
+}
+
+
 /* Phrase */
+
 .letter {
   font-size: var(--font-size-medium);
   height: 65px;
@@ -95,48 +101,67 @@ button:hover {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
-  transform: scale(0.7);
 }
 
 .space {
-  width: 30px;
+  width: 15px;
 }
+
+
 
 .show {
-  color: white;
-  background-color: #76CE82;
-  transform: scale(1.02);
-  transition: transform 0.3s cubic-bezier(.19, -1.1, .83, 2.28);
+  color: #fff;
+  background-color: #4ac0d5;
+  font-size: 20px;
+  height: 65px;
+  width: 65px;
+  padding: 20px 1px 0 1px;
+  margin-right: 2px;
+  border-radius: 5px;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
 }
 
+
 /* Keyboard */
+
 .keyrow {
   display: flex;
   justify-content: center;
 }
 
 .chosen {
-  background: var(--color-neutral);
+  background: #3a3f58;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
-.btn__reset {
-  padding: 8px;
-  margin: 50px auto;
-  background: #FFFFFF;
-  border-radius: 5px;
-  font-size: var(--font-size-medium);
-  cursor: pointer;
-  transition: transform 0.2s;
+.wrong {
+  background: #f7a964;
+  color: #FFFFFF;
 }
 
-.btn__reset:hover {
-  transform: scale(1.15);
+.btn__reset {
+  padding: 16px;
+  margin: 50px auto;
+  background: #f7a964;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  border-bottom: solid 4px rgba(0, 0, 0, .3);
+  border-right: solid 3px rgba(0, 0, 0, .3)
 }
+
+.btn__reset:active {
+  padding: 14px 16px 16px 14px;
+  border-bottom: solid 4px rgba(0, 0, 0, 0);
+  border-right: solid 3px rgba(0, 0, 0, 0);
+}
+
 
 /* Overlay */
+
 #overlay {
   display: flex;
   flex-direction: column;
@@ -148,31 +173,6 @@ button:hover {
   left: 0;
   right: 0;
   border-radius: 5px;
-  z-index: 1000;
-}
-
-#overlay.start {
-  background: linear-gradient(270deg, var(--color-win), var(--color-start));
-  background-size: 400% 400%;
-  -webkit-animation: AnimationName 1s ease infinite;
-  -moz-animation: AnimationName 1s ease infinite;
-  animation: AnimationName 1s ease infinite;
-}
-
-#overlay.win {
-  background: linear-gradient(270deg, var(--color-win), darkgreen);
-  background-size: 400% 400%;
-  -webkit-animation: AnimationName 3s ease infinite;
-  -moz-animation: AnimationName 3s ease infinite;
-  animation: AnimationName 3s ease infinite;
-}
-
-#overlay.lose {
-  background: linear-gradient(270deg, var(--color-lose), darkred);
-  background-size: 400% 400%;
-  -webkit-animation: AnimationName 3s ease infinite;
-  -moz-animation: AnimationName 3s ease infinite;
-  animation: AnimationName 3s ease infinite;
 }
 
 .title {
@@ -180,11 +180,11 @@ button:hover {
 }
 
 .start {
-  background-color: var(--color-start);
+  background-color: #3a3f58;
 }
 
 .start a {
-  color: var(--color-win);
+  color: #fff;
 }
 
 .win {
@@ -192,55 +192,13 @@ button:hover {
 }
 
 .win a {
-  color: darkgreen;
+  color: var(--color-win);
 }
 
 .lose {
-  background-color: var(--color-lose);
+  background-color: #f5785f;
 }
 
 .lose a {
-  color: darkred;
-}
-
-@-webkit-keyframes AnimationName {
-  0% {
-    background-position: 0% 50%
-  }
-
-  50% {
-    background-position: 100% 50%
-  }
-
-  100% {
-    background-position: 0% 50%
-  }
-}
-
-@-moz-keyframes AnimationName {
-  0% {
-    background-position: 0% 50%
-  }
-
-  50% {
-    background-position: 100% 50%
-  }
-
-  100% {
-    background-position: 0% 50%
-  }
-}
-
-@keyframes AnimationName {
-  0% {
-    background-position: 0% 50%
-  }
-
-  50% {
-    background-position: 100% 50%
-  }
-
-  100% {
-    background-position: 0% 50%
-  }
+  color: var(--color-lose);
 }
