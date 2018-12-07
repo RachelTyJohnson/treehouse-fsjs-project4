@@ -1,0 +1,246 @@
+/* Main styles */
+@import url('https://fonts.googleapis.com/css?family=Exo:900');
+
+/* Variables */
+:root {
+  --color-win: #78CF82;
+  --color-lose: #D94545;
+  --color-start: #53c0cc;
+  --color-neutral: #445069;
+  --color-neutral-light: #D2D2D2;
+  --color-keys: #37474F;
+  --color-keys-light: #E5E5E5;
+  --font-size-large: 60px;
+  --font-size-medium: 20px;
+  --transition: all .2s ease-in-out;
+}
+
+/* main */
+* {
+  box-sizing: border-box;
+  font-family: 'Exo', cursive;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+}
+
+body {
+  justify-content: space-evenly;
+  flex-direction: column;
+  display: flex;
+  height: 100vh;
+  background-image: url('../images/background.png');
+}
+
+li, ol, ul {
+  padding: 0;
+  display: inline-block;
+}
+
+h2 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: var(--font-size-large);
+  margin: 0;
+}
+
+button {
+  margin: 6px;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  color: var(--color-keys);
+  font-size: var(--font-size-medium);
+  background-color: var(--color-keys-light);
+  border-radius: 5px;
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+  transform: scale(1.15);
+  background: var(--color-start);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  max-height: 900px;
+  text-align: center;
+}
+
+.section {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Title */
+.header {
+  color: var(--color-start);
+}
+
+/* Phrase */
+.letter {
+  font-size: var(--font-size-medium);
+  height: 65px;
+  width: 65px;
+  padding: 20px 1px 0 1px;
+  margin-right: 2px;
+  color: transparent;
+  background: var(--color-neutral-light);
+  border-radius: 5px;
+  transform: scale(0.7);
+}
+
+.space {
+  width: 30px;
+}
+
+.show {
+  color: white;
+  background-color: #76CE82;
+  transform: scale(1.02);
+  transition: transform 0.3s cubic-bezier(.19, -1.1, .83, 2.28);
+}
+
+/* Keyboard */
+.keyrow {
+  display: flex;
+  justify-content: center;
+}
+
+.chosen {
+  background: var(--color-neutral);
+  border-radius: 5px;
+  font-size: var(--font-size-medium);
+  color: #FFFFFF;
+}
+
+.btn__reset {
+  padding: 8px;
+  margin: 50px auto;
+  background: #FFFFFF;
+  border-radius: 5px;
+  font-size: var(--font-size-medium);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn__reset:hover {
+  transform: scale(1.15);
+}
+
+/* Overlay */
+#overlay {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  color: #FFFFFF;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+#overlay.start {
+  background: linear-gradient(270deg, var(--color-win), var(--color-start));
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 1s ease infinite;
+  -moz-animation: AnimationName 1s ease infinite;
+  animation: AnimationName 1s ease infinite;
+}
+
+#overlay.win {
+  background: linear-gradient(270deg, var(--color-win), darkgreen);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+#overlay.lose {
+  background: linear-gradient(270deg, var(--color-lose), darkred);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+.title {
+  color: #FFF;
+}
+
+.start {
+  background-color: var(--color-start);
+}
+
+.start a {
+  color: var(--color-win);
+}
+
+.win {
+  background-color: var(--color-win);
+}
+
+.win a {
+  color: darkgreen;
+}
+
+.lose {
+  background-color: var(--color-lose);
+}
+
+.lose a {
+  color: darkred;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
