@@ -26,13 +26,14 @@
   -moz-user-select: none;
   /* Firefox all */
   -ms-user-select: none;
+  outline: none;
 }
 
 body {
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
-  height: 100vh;
+  height: 95vh;
   background-image: url('../images/background.png');
 }
 
@@ -87,9 +88,11 @@ button:hover {
 }
 
 .section {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   padding: 10px;
 }
+
 
 #phrase ul li{
   margin-top: 15px;
@@ -187,6 +190,12 @@ button:hover {
   right: 0;
   border-radius: 5px;
   z-index: 1000;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(.38,-0.64,.88,.97);
+}
+
+#overlay.move{
+  transform:translateY(100vh);
 }
 
 #overlay.start {

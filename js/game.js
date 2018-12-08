@@ -9,6 +9,7 @@ class Game {
       "This is Dog",
       "Marry Me"
     ];
+    this.phraseObj; //the phrase Object
   }
 
   //returns random phrase as array of chars
@@ -17,15 +18,22 @@ class Game {
     return this.phrases[diceroll].split("");
   }
 
-  handleInteraction(){
-
+  handleInteraction(button){
+    let match = this.phraseObj.checkLetter(button);
+    if (match!=null){ //checkLetter returned a letter
+      this.phraseObj.showMatchedLetter(button);
+      this.checkForWin();
+    } else { //checkletter returned null, no match
+      console.log("not match");
+      this.removeLife();
+    }
   }
 
   //this method removes a life and heart from the board.
   //Also checks if the players has hit 5 misses, if so init end game
   removeLife(){
     let scoreboard = document.querySelector('#scoreboard ol');
-    missed++;
+    this.missed++;
     scoreboard.removeChild(scoreboard.firstElementChild);
     let lostHeartLi = document.createElement('li');
     lostHeartLi.className = "tries";
@@ -33,8 +41,8 @@ class Game {
     lostHeartImg.src = "images/lostHeart.png";
     lostHeartLi.appendChild(lostHeartImg);
     scoreboard.appendChild(lostHeartLi);
-    if (missed==5){
-      gameOver(false);
+    if (this.missed==5){
+      this.gameOver(false);
     }
   }
 
@@ -43,7 +51,7 @@ class Game {
     let shown = document.querySelectorAll('.show');
     let letters = document.querySelectorAll('.letter');
     if (shown.length == letters.length){
-      gameOver(true);
+      this.gameOver(true);
     }
   }
 
@@ -66,8 +74,7 @@ class Game {
 
   startGame(){
     let randomPhrase = this.getRandomPhrase();
-    console.log(randomPhrase);
-    const newPhrase = new Phrase(randomPhrase);
+    this.phraseObj = new Phrase(randomPhrase);
+    this.phraseObj.addPhraseToDisplay();
   }
-
 }

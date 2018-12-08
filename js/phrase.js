@@ -6,15 +6,15 @@ class Phrase {
 
 
   //will print the Phrase onto the screen according to mockup
-  addPhraseToDisplay(phraseArray){
-    for (let i=0; i<phraseArray.length; i++){
+  addPhraseToDisplay(){
+    for (let i=0; i<this.phrase.length; i++){
       let li = document.createElement('li');
-      li.textContent = phraseArray[i];
-      if (phraseArray[i]!==" "){
-        li.classList.add = "letter";
-        li.classList.add = "hide";
+      li.textContent = this.phrase[i];
+      if (this.phrase[i]!==" "){
+        li.classList.add('letter');
+        li.classList.add('hide');
       } else {
-        li.className = "space";
+        li.classList.add('space');
       }
       let phraseUl = document.querySelector('#phrase ul');
       phraseUl.appendChild(li);
@@ -26,11 +26,11 @@ class Phrase {
     let letters = document.querySelectorAll('.letter');
     let result = null;
     for (let i=0; i<letters.length; i++){
-      if (letters[i].textContent.toUpperCase() == keybutton.textContent.toUpperCase()){
+      if (letters[i].textContent.toUpperCase() == keybutton.toUpperCase()){
         result = keybutton;
       }
     }
-    return result;
+    return result; //return either NULL or LETTER
   }
 
 
@@ -39,6 +39,7 @@ class Phrase {
     for (let i=0; i<letters.length; i++){
       if (letters[i].textContent.toUpperCase() == matchedLetter.toUpperCase()){
         letters[i].classList.remove("hide");
+        letters[i].classList.add("show");
       }
     }
   }
