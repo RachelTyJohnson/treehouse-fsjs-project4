@@ -26,7 +26,6 @@ class Game {
       this.checkForWin();
       returnValue = true;
     } else { //checkletter returned null, no match
-      console.log("not match");
       this.removeLife();
     }
     return returnValue;
