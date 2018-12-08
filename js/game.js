@@ -7,7 +7,13 @@ class Game {
       "I cast Fireball",
       "Data Never Lies",
       "This is Dog",
-      "Marry Me"
+      "Marry Me",
+      "This is it",
+      "Why not me",
+      "Milk and Sugar",
+      "Milk and Honey",
+      "Gone Fishing",
+      "Time to sleep"
     ];
     this.phraseObj; //the phrase Object
   }
@@ -18,6 +24,7 @@ class Game {
     return this.phrases[diceroll].split("");
   }
 
+  //checks player selection and assess win/lose
   handleInteraction(button){
     let match = this.phraseObj.checkLetter(button);
     let returnValue = false;
@@ -29,6 +36,15 @@ class Game {
       this.removeLife();
     }
     return returnValue;
+  }
+
+  //checks if all existing letters have been selected
+  checkForWin(){
+    let shown = document.querySelectorAll('.show');
+    let letters = document.querySelectorAll('.letter');
+    if (shown.length == letters.length){
+      this.gameOver(true);
+    }
   }
 
   //this method removes a life and heart from the board.
@@ -48,15 +64,7 @@ class Game {
     }
   }
 
-  //checks if all existing letters have been selected
-  checkForWin(){
-    let shown = document.querySelectorAll('.show');
-    let letters = document.querySelectorAll('.letter');
-    if (shown.length == letters.length){
-      this.gameOver(true);
-    }
-  }
-
+  //function to display endgame message and button to start again
   gameOver(gameWon){
     let overlay = document.getElementById('overlay');
     let title = document.querySelector('#overlay .title');
@@ -74,7 +82,7 @@ class Game {
     }
   }
 
-  //clear keyboard
+  //clear keyboard for replay
   clearKeyboard(){
     let keyboardLetters = document.querySelectorAll('#qwerty button');
     for (let i=0; i<keyboardLetters.length; i++){
@@ -83,6 +91,7 @@ class Game {
     }
   }
 
+  //clear scoreboard for replay
   clearScoreboard(){
     for (let i=0; i<5; i++){
       let scoreboard = document.querySelector('#scoreboard ol');
@@ -97,6 +106,7 @@ class Game {
     }
   }
 
+  //clears board/lives/keyboard, chooses new phrase and prints it
   startGame(){
     this.clearKeyboard();
     this.clearScoreboard();

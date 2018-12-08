@@ -9,7 +9,9 @@ function resetDisplay(){
   overlay.classList.add('move');
 }
 
-function markButton(returnValue, e=null, buttonPressed){
+//disables button on click/keypress and calls Game.handleInteraction();
+function markButton(e=null, buttonPressed){
+  let returnValue = gameObj.handleInteraction(buttonPressed);
   if (e!=null){
     if (returnValue){
       e.target.classList.add('chosen');
@@ -19,7 +21,6 @@ function markButton(returnValue, e=null, buttonPressed){
     e.target.setAttribute('disabled','true');
   } else {
     for (let i=0; i<qwertyButtons.length; i++){
-      console.log(buttonPressed);
       if(qwertyButtons[i].innerHTML == buttonPressed){
         if (returnValue){
           qwertyButtons[i].classList.add('chosen');
@@ -31,26 +32,27 @@ function markButton(returnValue, e=null, buttonPressed){
   }
 }
 
+//clicking the start button calls the reset display function
 startButton.addEventListener('click', () =>{
   resetDisplay();
   gameObj = new Game();
   gameObj.startGame();
 });
 
+//event listener for on-screen keyboard
 qwerty.addEventListener('click', (e) => {
   if (e.target.tagName == "BUTTON"){
     let clickedLetter = e.target.innerHTML;
-    let returnValue = gameObj.handleInteraction(clickedLetter);
-    markButton(returnValue, e, null);
+    markButton(e, clickedLetter);
   }
 });
 
+//event listener for when the physical keyboard is pressed
 window.addEventListener('keypress', (e) => {
   if (overlay.classList.contains('move')){
     let result = /[a-z]/i.test( e.key );
     if (result){
-      let returnValue = gameObj.handleInteraction(e.key);
-      markButton(returnValue, null, e.key);
+      markButton(null, e.key);
     }
   }
 });

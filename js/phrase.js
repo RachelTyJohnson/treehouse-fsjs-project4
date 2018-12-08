@@ -13,6 +13,7 @@ class Phrase {
     let newUl = document.createElement('ul');
     phrase.append(newUl);
 
+    //now print the new phrase
     for (let i=0; i<this.phrase.length; i++){
       let li = document.createElement('li');
       li.textContent = this.phrase[i];
@@ -41,6 +42,7 @@ class Phrase {
   }
 
 
+  //function to show matched letter on the phrase
   showMatchedLetter(matchedLetter){
     let letters = document.querySelectorAll('.letter');
     for (let i=0; i<letters.length; i++){
