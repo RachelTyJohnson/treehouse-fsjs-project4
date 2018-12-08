@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Exo', cursive;
+  font-family: 'Exo', sans-serif, cursive;
   -webkit-user-select: none;
   /* Chrome all / Safari all */
   -moz-user-select: none;

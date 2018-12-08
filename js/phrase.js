@@ -7,6 +7,12 @@ class Phrase {
 
   //will print the Phrase onto the screen according to mockup
   addPhraseToDisplay(){
+    //first clear the board
+    let phrase = document.getElementById('phrase');
+    phrase.removeChild(phrase.firstElementChild);
+    let newUl = document.createElement('ul');
+    phrase.append(newUl);
+
     for (let i=0; i<this.phrase.length; i++){
       let li = document.createElement('li');
       li.textContent = this.phrase[i];
@@ -20,6 +26,7 @@ class Phrase {
       phraseUl.appendChild(li);
     }
   }
+
 
   //if letter matches anything it'll return the letter. otherwise it'll return null.
   checkLetter(keybutton){

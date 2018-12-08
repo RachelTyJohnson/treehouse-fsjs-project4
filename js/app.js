@@ -8,6 +8,15 @@ function resetDisplay(){
   overlay.classList.add('move');
 }
 
+function markButton(e,returnValue){
+  if (returnValue){
+    e.target.classList.add('chosen');
+  } else {
+    e.target.classList.add('wrong');
+  }
+  e.target.setAttribute('disabled','true');
+}
+
 startButton.addEventListener('click', () =>{
   resetDisplay();
   gameObj = new Game();
@@ -17,6 +26,7 @@ startButton.addEventListener('click', () =>{
 qwerty.addEventListener('click', (e) => {
   if (e.target.tagName == "BUTTON"){
     let clickedLetter = e.target.innerHTML;
-    gameObj.handleInteraction(clickedLetter);
+    let returnValue = gameObj.handleInteraction(clickedLetter);
+    markButton(e,returnValue);
   }
 });

@@ -20,13 +20,16 @@ class Game {
 
   handleInteraction(button){
     let match = this.phraseObj.checkLetter(button);
+    let returnValue = false;
     if (match!=null){ //checkLetter returned a letter
       this.phraseObj.showMatchedLetter(button);
       this.checkForWin();
+      returnValue = true;
     } else { //checkletter returned null, no match
       console.log("not match");
       this.removeLife();
     }
+    return returnValue;
   }
 
   //this method removes a life and heart from the board.
@@ -72,7 +75,31 @@ class Game {
     }
   }
 
+  //clear keyboard
+  clearKeyboard(){
+    let keyboardLetters = document.querySelectorAll('#qwerty button');
+    for (let i=0; i<keyboardLetters.length; i++){
+      keyboardLetters[i].disabled = false;
+      keyboardLetters[i].classList.remove('chosen', 'wrong');
+    }
+  }
+
+  clearScoreboard(){
+    for (let i=0; i<5; i++){
+      let scoreboard = document.querySelector('#scoreboard ol');
+      scoreboard.removeChild(scoreboard.firstElementChild);
+      let lostHeartLi = document.createElement('li');
+      lostHeartLi.className = "tries";
+      let lostHeartImg = document.createElement('img');
+      lostHeartImg.src = "images/liveHeart.png";
+      lostHeartLi.appendChild(lostHeartImg);
+      scoreboard.appendChild(lostHeartLi);
+    }
+  }
+
   startGame(){
+    this.clearKeyboard();
+    this.clearScoreboard();
     let randomPhrase = this.getRandomPhrase();
     this.phraseObj = new Phrase(randomPhrase);
     this.phraseObj.addPhraseToDisplay();
