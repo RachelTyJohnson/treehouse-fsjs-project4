@@ -92,6 +92,7 @@ class Game {
       lostHeartLi.className = "tries";
       let lostHeartImg = document.createElement('img');
       lostHeartImg.src = "images/liveHeart.png";
+      lostHeartImg.classList.add('animated', 'pulse', 'infinite');
       lostHeartLi.appendChild(lostHeartImg);
       scoreboard.appendChild(lostHeartLi);
     }

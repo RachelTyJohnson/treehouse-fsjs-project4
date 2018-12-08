@@ -70,7 +70,10 @@ button {
 
 button:hover {
   transform: scale(1.15);
-  background: var(--color-neutral-light);
+}
+
+button:disabled:hover{
+  transform: none;
 }
 
 #btn__reset {
