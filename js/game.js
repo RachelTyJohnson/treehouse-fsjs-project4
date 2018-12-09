@@ -110,6 +110,7 @@ class Game {
   startGame(){
     this.clearKeyboard();
     this.clearScoreboard();
+    restartKeysPressed();
     let randomPhrase = this.getRandomPhrase();
     this.phraseObj = new Phrase(randomPhrase);
     this.phraseObj.addPhraseToDisplay();

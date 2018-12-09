@@ -3,6 +3,7 @@ let overlay = document.getElementById('overlay');
 let startButton = document.querySelector('#btn__reset');
 let qwerty = document.getElementById('qwerty');
 let qwertyButtons = document.querySelectorAll('#qwerty button');
+let keysPressed = "";
 
 //hide start screen overlay
 function resetDisplay(){
@@ -49,10 +50,17 @@ qwerty.addEventListener('click', (e) => {
 
 //event listener for when the physical keyboard is pressed
 window.addEventListener('keypress', (e) => {
-  if (overlay.classList.contains('move')){
-    let result = /[a-z]/i.test( e.key );
-    if (result){
-      markButton(null, e.key);
+  if (!keysPressed.includes(e.key)){
+    if (overlay.classList.contains('move')){
+      let result = /[a-z]/i.test( e.key );
+      if (result){
+        markButton(null, e.key);
+      }
     }
+    keysPressed += e.key;
   }
 });
+
+function restartKeysPressed(){
+  keysPressed = "";
+}
